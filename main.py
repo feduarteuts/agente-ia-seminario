@@ -30,6 +30,7 @@ from fastapi.staticfiles import StaticFiles
 from routes.chat import router as chat_router
 from routes.agent import router as agent_router
 from routes.health import router as health_router
+from routes.excel import router as excel_router
 
 load_dotenv()
 
@@ -104,6 +105,7 @@ async def pagina_soporte():
 app.include_router(health_router, tags=["Monitoreo"])
 app.include_router(chat_router, tags=["Chat"])
 app.include_router(agent_router, tags=["Agente"])
+app.include_router(excel_router)
 
 
 # ═══════════════════════════════════════════════════════════
