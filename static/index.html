@@ -18,7 +18,12 @@
       --danger: #f87171;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; min-width: 0; }
+
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
 
     body {
       margin: 0;
@@ -123,6 +128,7 @@
       border: 1px solid rgba(34, 211, 238, 0.3);
       align-self: flex-end;
       max-width: 85%;
+      overflow-wrap: anywhere;
     }
 
     .msg.bot {
@@ -130,6 +136,7 @@
       border: 1px solid var(--border-subtle);
       align-self: flex-start;
       max-width: 90%;
+      overflow-wrap: anywhere;
     }
 
     .excel-panel {
@@ -138,12 +145,14 @@
       border-radius: 12px;
       padding: 14px;
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 10px;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
       align-items: center;
     }
 
     .excel-panel input[type="file"] {
+      width: 100%;
+      max-width: 100%;
       color: var(--text-muted);
       font-size: 13px;
     }
@@ -216,6 +225,7 @@
       background: rgba(52, 211, 153, 0.16);
       color: var(--emerald);
       border: 1px solid rgba(52, 211, 153, 0.45);
+      white-space: nowrap;
     }
 
     .footer-credit {
@@ -231,6 +241,63 @@
 
     .footer-credit strong {
       color: var(--cyan);
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 12px 10px;
+      }
+
+      .console-shell {
+        padding: 16px;
+        border-radius: 14px;
+        gap: 12px;
+      }
+
+      h1 {
+        font-size: 18px;
+      }
+
+      .session-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .chat-box {
+        min-height: 220px;
+        max-height: 320px;
+        padding: 12px;
+      }
+
+      .msg.user,
+      .msg.bot {
+        max-width: 95%;
+      }
+
+      .excel-panel {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .btn-excel {
+        width: 100%;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .actions .btn-primary {
+        width: 100%;
+      }
+
+      .footer-credit {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
